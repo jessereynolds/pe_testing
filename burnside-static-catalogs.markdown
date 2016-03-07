@@ -2,12 +2,15 @@
 
 ## Scenarios:
 
+File Sync enabled and:
+
 - Orchestration Services Disabled
-  - Cached Catalogs Enabled
-  - Cached Catalogs Disabled
+  - With agent config `use_cached_catalog=true pluginsync=false`
+  - With agent config `use_cached_catalog=false plugingsync=true`
 - Orchestration Services Enabled
-  - Cached Catalogs Enabled
-  - Cached Catalogs Disabled
+  - With agent config `use_cached_catalog=true pluginsync=false`
+  - With agent config `use_cached_catalog=false plugingsync=true`
+
   
 ## Workflow:
 
