@@ -44,7 +44,9 @@ Configure code-manager as per the [docs](https://docs.puppetlabs.com/pe/latest/c
 
 and do a puppet run on the master. 
 
-Create a user 'bofh' as a member of the Operators group.
+Create a user 'bofh' as a member of the Operators group. 
+
+Generate password reset link for 'bofh' user. Paste it into a different browser session and proceed to assign a password to the bofh user.
 
 Configure the puppet-access client on the puppet master for the root user:
 
@@ -53,3 +55,16 @@ mkdir -p ~/.puppetlabs
 echo "{\"service-url\":\"https://`hostname -f`:4433/rbac-api\"}" > ~/.puppetlabs/puppet-access.conf
 ```
 
+Login and get a ticket for the bofh user from the rbac service:
+
+```
+puppet-access login --lifetime 10000h
+```
+
+You can now trigger code deployments like this:
+
+```
+# puppet-code deploy production --wait
+Deploying environment: production
+[{"environment":"production","id":3,"status":"complete","file-sync":{"environment-commit":"8a1ce95471870cc8c73256a9242498b68076665f","code-commit":"2cca713241959161fb2564778dde18c43557ea3b"},"deploy-signature":"d8a205db6125e0faaabc65daf800352ae71a8b86"}]
+```
