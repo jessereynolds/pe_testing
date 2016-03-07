@@ -31,5 +31,25 @@ File Sync enabled and:
 - Can Orchestration Services be enabled with you're running an HA environment? (Multiple monolithic installs with postgres replication). If so, how?
 - Do Orchestration Services play nicely with proxies? (Eg between masters, between puppet client tools and masters, ...) 
 
+## Environment Setup:
 
+The following vms are created on vmpooler by beaker:
+- master0 (Centos 7.0.1406)
+- agent0 (Centos 7.0.1406)
   
+Configure code-manager as per the [docs](https://docs.puppetlabs.com/pe/latest/code_mgr_config.html#configure-after-pe-installation) ie with the following parameters to the puppet_enterprise::profile::master class within the PE Master group:
+- code_manager_auto_configure=true
+- file_sync_enabled=true
+- r10k_remote="https://github.com/jessereynolds/control-repo-burnside-testing.git"
+
+and do a puppet run on the master. 
+
+Create a user 'bofh' as a member of the Operators group.
+
+Configure the puppet-access client on the puppet master for the root user:
+
+```
+mkdir -p ~/.puppetlabs
+echo "{\"service-url\":\"https://`hostname -f`:4433/rbac-api\"}" > ~/.puppetlabs/puppet-access.conf
+```
+
