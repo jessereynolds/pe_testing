@@ -8,7 +8,6 @@
 - Orchestration Services Enabled
   - Cached Catalogs Enabled
   - Cached Catalogs Disabled
-  - 
   
 ## Workflow:
 
@@ -18,4 +17,3 @@
 - Trigger puppet run from orchestrator client tools (if orchestration services are enabled), observe state of file under management
 - Trigger a puppet run using the 'run puppet' button in the UI, observe state of file under management
 - Trigger a puppet run using `puppet agent -t`, observe state of file under management
-- 
