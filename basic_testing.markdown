@@ -29,3 +29,11 @@ puppetserver-access.log:
 ```
 
 control-repo at [revision 02d6d08e](https://github.com/jessereynolds/control-repo-burnside-testing/blob/02d6d08e61135e31cfb6b3a99c61f79f47a7b084/site/profile/manifests/motd.pp)
+
+puppetserver.log in debug mode on a later test (using motd.txt as the source this time):
+
+```
+2016-03-08 03:29:13,227 DEBUG [qtp1958992479-74 - /puppet/v3/static_file_content/site/profile/files/motd.txt?environment=production&code_id=urn%3Apuppet%3Acode-id%3A1%3A4c1517d451791d6ea8acd771d51f5c00c3cd3e8
+a%3Bproduction] [o.e.j.i.WriteFlusher] write: WriteFlusher@1132a13a{IDLE} [HeapByteBuffer@66e23b65[p=0,l=140,c=8192,r=140]={<<<HTTP/1.1 403 Forb...z-SNAPSHOT)\r\n\r\n>>>g: chunked\r\nServe...\x00\x00\x00\x00\
+x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00},HeapByteBuffer@1768c5bd[p=0,l=101,c=32768,r=101]={<<<Request Denied: A...ry of a module.>>>petlabs/puppet/mo...rver","server",}]
+```
