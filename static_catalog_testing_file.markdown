@@ -1,4 +1,4 @@
-# Basic Testing
+# Static Catalog Testing - File
 
 - Spun up a master and agent on vmpooler
 - Set up code manager and file sync by setting the following parameters on the puppet_enterprise::profile::master class within the PE Master group:
