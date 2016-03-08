@@ -1,9 +1,14 @@
 # Basic Testing
 
 - Spun up a master and agent on vmpooler
-- Used the file resource within profile::motd to set the motd file
-- Puppet runs error out:
-
+- Set up code manager and file sync by setting the following parameters on the puppet_enterprise::profile::master class within the PE Master group:
+  - code_manager_auto_configure = true
+  - file_sync_enable = true
+  - r10k_remote = "https://github.com/jessereynolds/control-repo-burnside-testing.git"
+- Puppet run on the master
+- Create a group 'Burn' that has the agent vm pinned, and add the class 'profile::motd' from the control-repo
+- Puppet run on the agent
+- Boom:
 
 `puppet agent -t` output:
 
